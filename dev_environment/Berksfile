@@ -1,0 +1,7 @@
+source "https://supermarket.getchef.com"
+
+cookbook 'apt'
+cookbook 'build-essential'
+cookbook 'rbenv'
+cookbook 'rails-config', path: '.'
+cookbook 'nginx'

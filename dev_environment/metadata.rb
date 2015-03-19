@@ -1,0 +1,7 @@
+name             'rails-config'
+maintainer       'Eric Vierhaus'
+maintainer_email 'ejvaudio@gmail.com'
+license          'All rights reserved'
+description      'Installs/Configures rails-config'
+long_description 'Installs/Configures rails-config'
+version          '0.1.0'
