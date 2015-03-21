@@ -31,6 +31,10 @@ group :test,:development do
   gem 'rspec-rails'
   # Factory Girl gem for testing
   gem 'factory_girl_rails'
+  # Guard automatically runs rspec tests with file save
+  gem 'guard-rspec'
+  # On mac it gives you growl notifications in the corner
+  gem 'growl'
 end
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
