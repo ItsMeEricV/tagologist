@@ -1,0 +1,18 @@
+.DS_STORE
+.vagrant
+# Ignore bundler config.
+/code/.bundle
+
+# Ignore the default SQLite database.
+/code/db/*.sqlite3
+/code/db/*.sqlite3-journal
+
+# Ignore all logfiles and tempfiles.
+/code/log/*.log
+/code/tmp
+/code/config/database.yml
+/code/config/secrets.yml
+/code/config/initializers/secret_token.rb
+/code/node_modules/
+/code/.env
+/code/public/assets/
