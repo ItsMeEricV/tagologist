@@ -1,9 +1,14 @@
-<div class="container">
-  <div class="row centered">
-    <div class="col-lg-12">
-      <h1 style="font-size:50px"><b>Voice of the Customer</b> Hotlist</h1>
-      <h3>A collection of top customer issues.<br />Brought to you by the Customer Success and Support team.</h3>
-      <br>
+<div class="container text-center">
+  <h1 style="font-size:50px">Tagologist</h1>
+  <hr>
+  <%= form_for :tag_map, url: '/inspect', method: "post" do |f| %>
+    <div class="form-group">
+      <h3><%= label :url, "Enter a URL to fetch and inspect" %></h3>
+      <%= f.text_field :url, class: "form-control", placeholder: "Enter URL" %>
     </div>
-  </div>
+    <br />
+    <%= f.submit t('.update', :default => "Go"), class: "btn btn-primary btn-lg" %>
+    <!--<button class="btn btn-success btn-lg">Go!</button>-->
+  <% end %>
+  <br>
 </div> <!--/ .container -->

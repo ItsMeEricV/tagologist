@@ -1,0 +1,22 @@
+{
+  "name": "tagologist",
+  "version": "0.1.0",
+  "authors": [
+    "Eric Vierhaus <ejvaudio@gmail.com>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~>1.11.1",
+    "jquery-ujs": "~1.0.1",
+    "turbolinks": "~2.4.1",
+    "bootstrap": "~3.3.0"
+  }
+}

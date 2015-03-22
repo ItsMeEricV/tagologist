@@ -1,5 +1,15 @@
 module Tagger
 
+  def urlify(url)
+    if(url.match(/^(?!.*www.).*$/))
+      url.insert 0, "www."
+    end
+    if(url.match(/^(?!.*http:\/\/).*$/))
+      url.insert 0, "http://"
+    end
+    url
+  end
+
   def find_opening_tag(string, index = 0)
     string.index(/</,index)
   end
@@ -10,6 +20,11 @@ module Tagger
 
   def find_word_until_space(string, index = 0)
     string.match(/[^\s]+/,index)
+  end
+
+  def convert_tags(string)
+    string.gsub!(/(<\/*)/,'&lt;')
+    string.gsub!(/>/,'&gt;')
   end
 
   def insert_highlight_around_tag(string, index = 0, beginning_tag = '<span style="color:red">', ending_tag = '</span>')
