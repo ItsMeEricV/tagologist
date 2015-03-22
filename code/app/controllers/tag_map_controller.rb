@@ -19,7 +19,13 @@ class TagMapController < ApplicationController
     end
     response = conn.get ''
     @source = response.body
+    @source_url = urlify(inspect_params[:url])
 
+    @summary = inspect_tags(@source)
+    @summary = @summary.sort_by { |k,v| v }.reverse.to_h
+
+    #convert all tags to &lt; and &gt; then tell Rails that it's html_safe we it will render the apps tags
+    @source = convert_tags(@source).html_safe
   end
 
   private

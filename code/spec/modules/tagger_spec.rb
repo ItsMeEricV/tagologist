@@ -34,11 +34,42 @@ describe Tagger do
     end
   end
 
+  describe ".find_ending_script_tag" do
+    let(:tag) { '<script type="javascript"> var name="horse" </script> sdf '}
+    it "should return the index of the >" do
+      expect(find_ending_script_tag(tag)).to eq(44)
+    end
+  end
+
+  describe ".find_tag_name" do
+    let(:tag) { "<textarea row=3 cols=10>ljsdfl</textarea>" }
+    it "should return the tag name with a space after it" do
+      expect(find_tag_name(tag,1)).to eq("textarea")
+    end
+
+    let(:tag2) { "<br>some text" }
+    it "should return the tag name without a space after it" do
+      expect(find_tag_name(tag2,1)).to eq("br")
+    end
+  end
+
   describe ".convert_tags" do
-    let(:tag) { "some text <textarea row=3 cols=10>ljsdfl</textarea>"}
+    let(:tag) { 'some text <textarea row=3 cols=10>ljsdfl</textarea>'}
     it "should replace < and > with &lt; and &gt;" do
       convert_tags(tag)
       expect(tag).to eq("some text &lt;textarea row=3 cols=10&gt;ljsdfl&lt;textarea&gt;")
+    end
+  end
+
+  describe ".inspect_tags" do
+    let(:code) { 'some text <textarea row=3 cols=10>ljsdfl</textarea><br /> <div class="btn btn-default">More text</div><br> sdlfkj <script>alert("heelllo")</script> Ending words' }
+    it "should return a map of the tags" do
+      expect(inspect_tags(code)).to eq({"textarea" => 1, "br" => 2, "div" => 1, "script" => 1})
+    end
+
+    let(:code2) { 'some text <textarea row=3 cols=10>ljsdfl</textarea><br /> <div class="btn btn-default">More text</div><br> sdlfkj <script>alert("heelllo") for(i=0; i<10; i++) { document.write("whee") }</script> Ending words' }
+    it "should return a map of the tags ignoring things inside of script" do
+      expect(inspect_tags(code2)).to eq({"textarea" => 1, "br" => 2, "div" => 1, "script" => 1})
     end
   end
 

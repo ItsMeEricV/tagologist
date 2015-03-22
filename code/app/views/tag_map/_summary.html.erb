@@ -1,3 +1,6 @@
-<tr>
-  <td> TEST </td>
-</tr>
+<% @summary.each do |tag_name,number| %>
+  <tr>
+    <td> <%= tag_name %> </td>
+    <td> <%= number %> </td>
+  </tr>
+<% end %>
