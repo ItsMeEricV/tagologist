@@ -57,7 +57,7 @@ describe Tagger do
     let(:tag) { 'some text <textarea row=3 cols=10>ljsdfl</textarea>'}
     it "should replace < and > with &lt; and &gt;" do
       convert_tags(tag)
-      expect(tag).to eq("some text &lt;textarea row=3 cols=10&gt;ljsdfl&lt;textarea&gt;")
+      expect(tag).to eq("some text &lt;textarea row=3 cols=10&gt;ljsdfl&lt;/textarea&gt;")
     end
   end
 
@@ -72,6 +72,27 @@ describe Tagger do
       expect(inspect_tags(code2)).to eq({"textarea" => 1, "br" => 2, "div" => 1, "script" => 1})
     end
   end
+
+  describe ".decorate_tags" do
+    let(:code) { 'some text <textarea row=3 cols=10>ljsdfl</textarea><br /> <div class="btn btn-default">More text</div><br> sdlfkj <script>alert("heelllo")</script> Ending words' }
+    it "should return tags converted to & notation and decorated with span data elements" do
+      decorate_tags(code) 
+      expect(code).to eq('some text &lt;<span data-tag-name="textarea">textarea</span> row=3 cols=10&gt;ljsdfl&lt;/textarea&gt;&lt;<span data-tag-name="br">br</span> /&gt; &lt;<span data-tag-name="div">div</span> class="btn btn-default"&gt;More text&lt;/div&gt;&lt;<span data-tag-name="br">br</span>&gt; sdlfkj &lt;<span data-tag-name="script">script</span>&gt;alert("heelllo")&lt;/script&gt; Ending words')
+    end
+
+    let(:code2) { 'some text <head><meta content="sdfsd">' }
+    it "should handle tags without spaces" do
+      decorate_tags(code2) 
+      expect(code2).to eq('some text &lt;<span data-tag-name="head">head</span>&gt;&lt;<span data-tag-name="meta">meta</span> content="sdfsd"&gt;')
+    end
+
+    # let(:code2) { 'some text <textarea row=3 cols=10>ljsdfl</textarea><br /> <div class="btn btn-default">More text</div><br> sdlfkj <script>alert("heelllo") for(i=0; i<10; i++) { document.write("whee") }</script> Ending words' }
+    # it "should return a map of the tags ignoring things inside of script" do
+    #   expect(decorate_tags(code2)).to eq({"textarea" => 1, "br" => 2, "div" => 1, "script" => 1})
+    # end
+  end
+
+
 
   # describe ".insert_highlight_around_tag" do
   #   pending "not needed on server side now"

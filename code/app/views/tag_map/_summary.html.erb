@@ -1,6 +1,6 @@
 <% @summary.each do |tag_name,number| %>
   <tr>
-    <td> <%= tag_name %> </td>
+    <td class="tag_name" data-tag="<%= tag_name %>"> <%= tag_name %> </td>
     <td> <%= number %> </td>
   </tr>
 <% end %>
