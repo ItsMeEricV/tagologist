@@ -42,6 +42,13 @@ group :test,:development do
   # On mac it gives you growl notifications in the corner
   gem 'growl'
 
+  #capistrano
+  gem 'capistrano'
+  gem 'capistrano-rails', '~> 1.1.1'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rbenv', '~> 2.0'
+  gem 'capistrano3-puma'
+
 end
 
 group :test do
