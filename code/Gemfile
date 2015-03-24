@@ -31,6 +31,8 @@ gem "therubyracer"
 
 gem "faraday"
 
+gem 'addressable'
+
 group :test,:development do
   gem 'rspec-rails'
   # Factory Girl gem for testing
@@ -39,6 +41,13 @@ group :test,:development do
   gem 'guard-rspec'
   # On mac it gives you growl notifications in the corner
   gem 'growl'
+
+end
+
+group :test do
+  #for VCR http request caching
+  gem 'vcr'
+  gem 'webmock'
 end
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
