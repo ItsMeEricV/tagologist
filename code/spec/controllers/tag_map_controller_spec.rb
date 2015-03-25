@@ -11,7 +11,7 @@ RSpec.describe TagMapController, type: :controller do
       subject { post :inspect, valid_attributes }
 
       it {
-        VCR.use_cassette('get_source', record: :new_episodes, match_requests_on: [:uri]) do 
+        VCR.use_cassette('get_source', record: :new_episodes) do 
           should have_http_status(:success) 
         end
       }

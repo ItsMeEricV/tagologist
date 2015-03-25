@@ -30,6 +30,7 @@ gem 'puma'
 gem "therubyracer"
 
 gem "faraday"
+gem "faraday_middleware"
 
 gem 'addressable'
 

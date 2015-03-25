@@ -4,11 +4,6 @@ class TagMapController < ApplicationController
   include Tagger
   SCHEMES = %w(http https)
 
-
-  def index
-
-  end
-
   def inspect
 
     #verify that URL is valid
@@ -18,12 +13,19 @@ class TagMapController < ApplicationController
 
       #setup Faraday connection to GET source code
       conn = Faraday.new(:url => url) do |c|
+        c.use FaradayMiddleware::FollowRedirects, limit: 5
         c.request  :url_encoded            
         c.response :logger                  # log requests to STDOUT
         #c.response :json                  # form response as JSON (otherwise it will be a string)
         c.adapter  Faraday.default_adapter  # make requests with Net::HTTP
       end
-      response = conn.get ''
+
+      begin
+        response = conn.get ''
+      rescue => e
+        render json: e.message, status: :unprocessable_entity and return
+      end
+
       #set the source code to @source so it is available in our view
       @source = response.body
       @source_url = url

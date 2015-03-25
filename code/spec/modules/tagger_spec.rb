@@ -5,18 +5,18 @@ describe Tagger do
 
   describe ".urlify" do
     let(:url) { "google.com" }
-    it "should add www. and http:// to the head of the url" do
-      expect(urlify(url)).to eq("http://www.google.com")
+    it "should add http:// to the head of the url" do
+      expect(urlify(url)).to eq("http://google.com")
     end
 
-    let(:url) { "www.google.com" }
-    it "should only add http:// to the head" do
-      expect(urlify(url)).to eq("http://www.google.com")
+    let(:url2) { "www.google.com" }
+    it "should add http:// to the head" do
+      expect(urlify(url2)).to eq("http://www.google.com")
     end
 
-    let(:url) { "http://www.google.com" }
+    let(:url3) { "http://www.google.com" }
     it "should not modify the url" do
-      expect(urlify(url)).to eq("http://www.google.com")
+      expect(urlify(url3)).to eq("http://www.google.com")
     end
   end
 

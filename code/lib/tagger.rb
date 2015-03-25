@@ -1,14 +1,10 @@
 module Tagger
 
   def urlify(url)
-    #if no www then add it to the url
-    if(url.match(/^(?!.*www.).*$/))
-      url.insert 0, "www."
-    end
-    #if no http:// then add it to the url
-    if(url.match(/^(?!.*http:\/\/).*$/))
+    #if no www and no http/https then add http to the url
+    if(url.match(/^(?!.*http:\/\/).*$/) && url.match(/^(?!.*https:\/\/).*$/))
       url.insert 0, "http://"
-    end
+    end 
     url
   end
 

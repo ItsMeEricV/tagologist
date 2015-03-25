@@ -6,6 +6,7 @@ console.log('tag_map');
 $( document ).ready(function() {
   $('.tag_name').click(function(e) {
     tag = $(e.currentTarget).data('tag');
+    $('.code').removeClass('code');
     $('*[data-tag-name="' + tag + '"]').addClass('code');
   });
 });
