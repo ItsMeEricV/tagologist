@@ -85,21 +85,6 @@ describe Tagger do
       decorate_tags(code2) 
       expect(code2).to eq('some text &lt;<span data-tag-name="head">head</span>&gt;&lt;<span data-tag-name="meta">meta</span> content="sdfsd"&gt;')
     end
-
-    # let(:code2) { 'some text <textarea row=3 cols=10>ljsdfl</textarea><br /> <div class="btn btn-default">More text</div><br> sdlfkj <script>alert("heelllo") for(i=0; i<10; i++) { document.write("whee") }</script> Ending words' }
-    # it "should return a map of the tags ignoring things inside of script" do
-    #   expect(decorate_tags(code2)).to eq({"textarea" => 1, "br" => 2, "div" => 1, "script" => 1})
-    # end
   end
-
-
-
-  # describe ".insert_highlight_around_tag" do
-  #   pending "not needed on server side now"
-  #   let(:tag) { "some text <textarea row=3 cols=10>ljsdfl</textarea>"}
-  #   it "should insert the highlight spans around the tag name" do
-  #     expect(insert_highlight_around_tag(tag,10)).to eq("sdf")
-  #   end
-  # end
 
 end

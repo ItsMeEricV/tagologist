@@ -27,7 +27,7 @@ Files of interest
 
 - **Application**
   - [tag_map_controller](https://github.com/ejvaudio/tagologist/blob/master/code/app/controllers/tag_map_controller.rb): Controller that retrieves the source code, calls helper analysis functions, and activates the view
-  - [tagger](https://github.com/ejvaudio/tagologist/blob/master/code/lib/tagger.rb): Helper functions to analysis and decorate the source code
+  - [tagger](https://github.com/ejvaudio/tagologist/blob/master/code/lib/tagger.rb): Helper functions to analyze and decorate the source code
   - [Views](https://github.com/ejvaudio/tagologist/tree/master/code/app/views/tag_map): View files that display the source code and summary table
 - **Testing**
   - [unit tests](https://github.com/ejvaudio/tagologist/blob/master/code/spec/modules/tagger_spec.rb)
